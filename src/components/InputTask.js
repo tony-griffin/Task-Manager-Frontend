@@ -26,10 +26,10 @@ const InputTask = () => {
           onChange={(event) => setDescription(event.target.value)}
         />
 
-        <button class="btn btn-success">Add</button>
+        <button class="btn btn-success ml-5">Add</button>
       </form>
     </Fragment>
   );
-}
+};
 
 export default InputTask;
