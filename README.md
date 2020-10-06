@@ -1,6 +1,10 @@
 # Task-Manager-Frontend
 Frontend code for the Task Manager application
 
+## Requirements
+
+* Node.js 12 (if you have NVM install just run `nvm use`)
+
 ```
 docker build -t task-manager:latest .
 ```
