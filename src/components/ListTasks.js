@@ -1,12 +1,27 @@
 import React, { Fragment } from "react";
 
 const ListTasks = () => {
-  const getTasks = () => {
-    try {
-    } catch (error) {
-      console.error(error.message);
-    }
-  };
+  // const getTasks = () => {
+  //   try {
+  //   } catch (error) {
+  //     console.error(error.message);
+  //   }
+  // };
+
+  const tasks = [
+    {
+      id: 1,
+      description: "Commit to master",
+    },
+    {
+      id: 2,
+      description: "Re-do User Stories",
+    },
+    {
+      id: 3,
+      description: "Prepare Presentation",
+    },
+  ];
 
   return (
     <Fragment>
@@ -20,10 +35,16 @@ const ListTasks = () => {
           </tr>
         </thead>
         <tbody>
-          {/* <tr>
-            <td>1</td>
-            <td>Commit master branch</td>
-          </tr> */}
+          {tasks.map((task) => {
+            return (
+              <tr key={task.id}>
+                <td>{task.id}</td>
+                <td>{task.description}</td>
+                <td>Edit</td>
+                <td>Delete</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </Fragment>
