@@ -15,6 +15,12 @@ const InputTask = () => {
   const onSubmitForm = (event) => {
     event.preventDefault();
 
+    const inputFieldValue = document.getElementById("input");
+    if (!inputFieldValue.value) {
+      alert("You must enter a task description!");
+      return;
+    }
+
     try {
       let uniqueKey = key;
       uniqueKey++;
@@ -30,6 +36,7 @@ const InputTask = () => {
         // If not just add the key
         localStorage.setItem(uniqueKey, description);
       }
+      window.location.reload();
     } catch (err) {
       console.error(err.message);
     }
