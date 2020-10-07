@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Requirements
 
-- Node.js 12 (if you have NVM install just run `nvm use`)
+- Node.js 12 (if you have NVM installed just run `nvm use`)
 
 ## Available Scripts
 
