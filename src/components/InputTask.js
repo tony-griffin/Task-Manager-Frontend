@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 
 const InputTask = () => {
   // set up component state
-  const [id, setId] = useState(0);
+  const [key, setKey] = useState(0);
   const [description, setDescription] = useState(
     localStorage.getItem("myValueInLocalStorage") || ""
   );
@@ -15,15 +15,31 @@ const InputTask = () => {
   const onSubmitForm = (event) => {
     event.preventDefault();
 
+    const inputFieldValue = document.getElementById("input");
+    if (!inputFieldValue.value) {
+      alert("You must enter a task description!");
+      return;
+    }
+
     try {
-      let uniqueId = id;
-      uniqueId++;
-      setId(uniqueId);
-      localStorage.setItem(uniqueId, description);
+      let uniqueKey = key;
+      uniqueKey++;
+      setKey(uniqueKey);
+      // Check if localStorage already has this key, get an array of the keys and check if its in it,includes()?
+      let localStorageKeys = Object.keys(localStorage).sort();
+
+      // If true, set the new key to the length of the localStorage array (one greater than the last element).
+      if (localStorageKeys.includes(uniqueKey.toString())) {
+        let key = localStorage.length + 1;
+        localStorage.setItem(key, description);
+      } else {
+        // If not just add the key
+        localStorage.setItem(uniqueKey, description);
+      }
+      window.location.reload();
     } catch (err) {
       console.error(err.message);
     }
-    console.log("LOCALSTORAGE: -----", localStorage);
   };
 
   return (
