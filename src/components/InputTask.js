@@ -20,7 +20,7 @@ const InputTask = () => {
 
     try {
       const body = { description };
-      const response = await fetch("http://localhost:5000/tasks", {
+      await fetch("http://localhost:5000/tasks", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),

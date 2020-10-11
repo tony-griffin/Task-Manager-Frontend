@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 
-const ListTasks = (props) => {
+const ListTasks = () => {
   const [tasks, setTasks] = useState([]);
 
   const getTasks = async () => {
@@ -17,7 +17,18 @@ const ListTasks = (props) => {
     getTasks();
   }, []);
 
-  console.log(tasks);
+  // Delete function
+  const deleteTask = async (id) => {
+    try {
+      await fetch(`http://localhost:5000/tasks/${id}`, {
+        method: "DELETE",
+      });
+
+      setTasks(tasks.filter((task) => task.task_id !== id));
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
 
   return (
     <Fragment>
@@ -37,7 +48,14 @@ const ListTasks = (props) => {
                 <td>{task.task_id}</td>
                 <td>{task.description}</td>
                 <td>Edit</td>
-                <td>Delete</td>
+                <td>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => deleteTask(task.task_id)}
+                  >
+                    Delete
+                  </button>
+                </td>
               </tr>
             );
           })}
