@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
+import EditTask from "./EditTask";
 
 const ListTasks = () => {
   const [tasks, setTasks] = useState([]);
@@ -47,7 +48,9 @@ const ListTasks = () => {
               <tr key={task.task_id}>
                 <td>{task.task_id}</td>
                 <td>{task.description}</td>
-                <td>Edit</td>
+                <td>
+                  <EditTask task={task} />
+                </td>
                 <td>
                   <button
                     className="btn btn-danger"
