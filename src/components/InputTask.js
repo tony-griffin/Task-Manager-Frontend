@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 
 const InputTask = () => {
-  // set up component state
+  // set up component state using localStorage
   const [key, setKey] = useState(0);
   const [description, setDescription] = useState(
     localStorage.getItem("myValueInLocalStorage") || ""
