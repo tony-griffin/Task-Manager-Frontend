@@ -9,7 +9,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Available Scripts
 
 ```
-npm start
+npm run start
 ```
 
 Runs the app in the development mode.<br />
