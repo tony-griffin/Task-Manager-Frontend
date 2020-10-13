@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import EditTask from "./EditTask";
-console.log("ENV VAR:", process.env.API_PORT_NUM);
+console.log("API_PORT_NUM env var is:", process.env.API_PORT_NUM);
 
 const port = process.env.API_PORT_NUM || 5000;
 
