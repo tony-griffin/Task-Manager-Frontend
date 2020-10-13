@@ -1,6 +1,7 @@
 FROM node:13.12.0-buster-slim
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
+ENV API_PORT_NUM=5000
 COPY package.json ./
 COPY package-lock.json ./
 RUN npm install

@@ -1,12 +1,17 @@
 import React, { Fragment, useEffect, useState } from "react";
 import EditTask from "./EditTask";
+console.log("ENV VAR:", process.env.API_PORT_NUM);
+
+const port = process.env.API_PORT_NUM || 5000;
+
+console.log("PORT IS", port);
 
 const ListTasks = () => {
   const [tasks, setTasks] = useState([]);
 
   const getTasks = async () => {
     try {
-      const response = await fetch("http://localhost:5000/tasks");
+      const response = await fetch(`http://localhost:${port}/tasks`);
       const jsonData = await response.json();
       setTasks(jsonData);
     } catch (error) {
