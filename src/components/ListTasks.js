@@ -1,14 +1,18 @@
 import React, { Fragment, useEffect, useState } from "react";
 import EditTask from "./EditTask";
+import axios from "axios";
 
 const ListTasks = () => {
   const [tasks, setTasks] = useState([]);
 
   const getTasks = async () => {
     try {
-      const response = await fetch("http://localhost:5000/tasks");
-      const jsonData = await response.json();
-      setTasks(jsonData);
+      let data;
+      await axios.get("http://localhost:5000/tasks").then((res) => {
+        data = res.data;
+      });
+
+      setTasks(data);
     } catch (error) {
       console.error(error.message);
     }
@@ -19,11 +23,10 @@ const ListTasks = () => {
   }, []);
 
   // Delete function
+
   const deleteTask = async (id) => {
     try {
-      await fetch(`http://localhost:5000/tasks/${id}`, {
-        method: "DELETE",
-      });
+      await axios.delete(`http://localhost:5000/tasks/${id}`);
 
       setTasks(tasks.filter((task) => task.task_id !== id));
     } catch (error) {
