@@ -14,7 +14,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "tmf-build": "docker build -t task-manager-frontend .",
+    "tmf-run": "docker run -p 3000:80 task-manager-frontend"
   },
   "eslintConfig": {
     "extends": "react-app"
