@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import axios from "axios";
 
 const InputTask = () => {
   // set up component state
@@ -20,11 +21,8 @@ const InputTask = () => {
 
     try {
       const body = { description };
-      await fetch("http://localhost:5000/tasks", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
+      await axios.post(`http://localhost:5000/tasks`, body);
+
       window.location = "/";
     } catch (error) {
       console.error(error.message);
