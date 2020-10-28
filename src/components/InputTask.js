@@ -1,6 +1,8 @@
 import React, { Fragment, useState } from "react";
 import axios from "axios";
 
+const host = process.env.REACT_APP_BACKEND_HOST;
+
 const InputTask = () => {
   // set up component state
   const [description, setDescription] = useState("");
@@ -22,7 +24,6 @@ const InputTask = () => {
     try {
       const body = { description };
       await axios.post(`http://localhost:5000/tasks`, body);
-
       window.location = "/";
     } catch (error) {
       console.error(error.message);

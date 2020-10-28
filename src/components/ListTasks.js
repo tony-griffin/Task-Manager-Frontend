@@ -2,17 +2,21 @@ import React, { Fragment, useEffect, useState } from "react";
 import EditTask from "./EditTask";
 import axios from "axios";
 
+const host = process.env.REACT_APP_BACKEND_HOST;
+
 const ListTasks = () => {
   const [tasks, setTasks] = useState([]);
 
   const getTasks = async () => {
     try {
+
       let data;
       await axios.get("http://localhost:5000/tasks").then((res) => {
         data = res.data;
       });
 
       setTasks(data);
+
     } catch (error) {
       console.error(error.message);
     }
@@ -26,6 +30,7 @@ const ListTasks = () => {
 
   const deleteTask = async (id) => {
     try {
+
       await axios.delete(`http://localhost:5000/tasks/${id}`);
 
       setTasks(tasks.filter((task) => task.task_id !== id));

@@ -1,6 +1,9 @@
 import React, { Fragment, useState } from "react";
 import axios from "axios";
 
+const host = process.env.REACT_APP_BACKEND_HOST;
+
+
 const EditTask = ({ task }) => {
   const [description, setDescription] = useState(task.description);
 
@@ -10,8 +13,8 @@ const EditTask = ({ task }) => {
 
     try {
       const body = { description };
+
       await axios.put(`http://localhost:5000/tasks/${task.task_id}`, body);
-      
       window.location = "/";
     } catch (error) {
       console.error(error.message);
