@@ -1,5 +1,7 @@
 import React, { Fragment, useState } from "react";
 
+const host = process.env.REACT_APP_BACKEND_HOST;
+
 const InputTask = () => {
   // set up component state
   const [description, setDescription] = useState("");
@@ -20,7 +22,7 @@ const InputTask = () => {
 
     try {
       const body = { description };
-      await fetch("http://localhost:5000/tasks", {
+      await fetch(`${host}/tasks`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),

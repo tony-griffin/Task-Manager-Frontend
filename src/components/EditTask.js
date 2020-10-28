@@ -1,5 +1,8 @@
 import React, { Fragment, useState } from "react";
 
+const host = process.env.REACT_APP_BACKEND_HOST;
+
+
 const EditTask = ({ task }) => {
   const [description, setDescription] = useState(task.description);
 
@@ -9,7 +12,7 @@ const EditTask = ({ task }) => {
 
     try {
       const body = { description };
-      await fetch(`http://localhost:5000/tasks/${task.task_id}`, {
+      await fetch(`${host}/tasks/${task.task_id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),

@@ -1,12 +1,14 @@
 import React, { Fragment, useEffect, useState } from "react";
 import EditTask from "./EditTask";
 
+const host = process.env.REACT_APP_BACKEND_HOST;
+
 const ListTasks = () => {
   const [tasks, setTasks] = useState([]);
 
   const getTasks = async () => {
     try {
-      const response = await fetch("http://localhost:5000/tasks");
+      const response = await fetch(`${host}/tasks`);
       const jsonData = await response.json();
       setTasks(jsonData);
     } catch (error) {
@@ -21,7 +23,7 @@ const ListTasks = () => {
   // Delete function
   const deleteTask = async (id) => {
     try {
-      await fetch(`http://localhost:5000/tasks/${id}`, {
+      await fetch(`${host}/tasks/${id}`, {
         method: "DELETE",
       });
 
